@@ -1,0 +1,19 @@
+[package]
+name = "toon-1512"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ledger = { workspace = true }
+mina-p2p-messages = { workspace = true }
+mina-hasher = { workspace = true }
+mina-signer = { workspace = true }
+mina-curves = { workspace = true }
+mina-poseidon = { workspace = true }
+groupmap = { git = "https://github.com/o1-labs/proof-systems", tag = "0.3.0" }
+ark-ff = { workspace = true }
+ark-ec = { workspace = true }
+base64 = { workspace = true }
+serde_json = { workspace = true }
+rsexp = { workspace = true }
+num-bigint = { workspace = true }

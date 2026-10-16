@@ -1,0 +1,866 @@
+diff --git i/Cargo.lock w/Cargo.lock
+index ff09df05..b402a8eb 100644
+--- i/Cargo.lock
++++ w/Cargo.lock
+@@ -3305,12 +3305,11 @@ dependencies = [
+ 
+ [[package]]
+ name = "groupmap"
+-version = "0.1.0"
+-source = "git+https://github.com/o1-labs/proof-systems?tag=0.2.0#e8e02799802b42caf727d69c2dba7fce9548cb5b"
++version = "0.6.0"
++source = "git+https://github.com/o1-labs/proof-systems?rev=ab84160fa2c22290a8506a7742ac1378879fc386#ab84160fa2c22290a8506a7742ac1378879fc386"
+ dependencies = [
+  "ark-ec",
+  "ark-ff",
+- "rand",
+ ]
+ 
+ [[package]]
+@@ -3395,6 +3394,7 @@ dependencies = [
+  "allocator-api2",
+  "equivalent",
+  "foldhash",
++ "serde",
+ ]
+ 
+ [[package]]
+@@ -4017,8 +4017,8 @@ dependencies = [
+ 
+ [[package]]
+ name = "internal-tracing"
+-version = "0.1.0"
+-source = "git+https://github.com/o1-labs/proof-systems?tag=0.2.0#e8e02799802b42caf727d69c2dba7fce9548cb5b"
++version = "0.6.0"
++source = "git+https://github.com/o1-labs/proof-systems?rev=ab84160fa2c22290a8506a7742ac1378879fc386#ab84160fa2c22290a8506a7742ac1378879fc386"
+ 
+ [[package]]
+ name = "io-lifetimes"
+@@ -4207,8 +4207,8 @@ dependencies = [
+ 
+ [[package]]
+ name = "kimchi"
+-version = "0.1.0"
+-source = "git+https://github.com/o1-labs/proof-systems?tag=0.2.0#e8e02799802b42caf727d69c2dba7fce9548cb5b"
++version = "0.6.0"
++source = "git+https://github.com/o1-labs/proof-systems?rev=ab84160fa2c22290a8506a7742ac1378879fc386#ab84160fa2c22290a8506a7742ac1378879fc386"
+ dependencies = [
+  "ark-ec",
+  "ark-ff",
+@@ -4225,7 +4225,6 @@ dependencies = [
+  "num-bigint",
+  "num-integer",
+  "o1-utils",
+- "once_cell",
+  "poly-commitment",
+  "rand",
+  "rand_core",
+@@ -4233,10 +4232,10 @@ dependencies = [
+  "rmp-serde",
+  "serde",
+  "serde_with",
+- "strum",
++ "sha2 0.10.8",
++ "strum 0.27.2",
+  "strum_macros",
+  "thiserror 2.0.11",
+- "turshi",
+ ]
+ 
+ [[package]]
+@@ -5013,12 +5012,13 @@ dependencies = [
+ 
+ [[package]]
+ name = "mina-curves"
+-version = "0.1.0"
+-source = "git+https://github.com/o1-labs/proof-systems?tag=0.2.0#e8e02799802b42caf727d69c2dba7fce9548cb5b"
++version = "0.6.0"
++source = "git+https://github.com/o1-labs/proof-systems?rev=ab84160fa2c22290a8506a7742ac1378879fc386#ab84160fa2c22290a8506a7742ac1378879fc386"
+ dependencies = [
+  "ark-bn254",
+  "ark-ec",
+  "ark-ff",
++ "ark-std",
+  "num-bigint",
+ ]
+ 
+@@ -5049,8 +5049,8 @@ dependencies = [
+ 
+ [[package]]
+ name = "mina-hasher"
+-version = "0.1.0"
+-source = "git+https://github.com/o1-labs/proof-systems?tag=0.2.0#e8e02799802b42caf727d69c2dba7fce9548cb5b"
++version = "0.6.0"
++source = "git+https://github.com/o1-labs/proof-systems?rev=ab84160fa2c22290a8506a7742ac1378879fc386#ab84160fa2c22290a8506a7742ac1378879fc386"
+ dependencies = [
+  "ark-ff",
+  "bitvec",
+@@ -5109,7 +5109,7 @@ dependencies = [
+  "serde_json",
+  "serde_with",
+  "static_assertions",
+- "strum",
++ "strum 0.26.2",
+  "strum_macros",
+  "thiserror 1.0.60",
+  "time",
+@@ -5188,7 +5188,7 @@ dependencies = [
+  "redux",
+  "serde",
+  "serde_json",
+- "strum",
++ "strum 0.26.2",
+  "strum_macros",
+ ]
+ 
+@@ -5224,7 +5224,7 @@ dependencies = [
+  "serde",
+  "serde_json",
+  "sha3",
+- "strum",
++ "strum 0.26.2",
+  "strum_macros",
+  "thiserror 1.0.60",
+  "tokio",
+@@ -5269,7 +5269,7 @@ dependencies = [
+  "reqwest",
+  "serde",
+  "serde_json",
+- "strum",
++ "strum 0.26.2",
+  "strum_macros",
+  "temp-dir",
+  "thiserror 1.0.60",
+@@ -5362,7 +5362,7 @@ dependencies = [
+  "serde_with",
+  "sha2 0.10.8",
+  "smallvec",
+- "strum",
++ "strum 0.26.2",
+  "strum_macros",
+  "thiserror 1.0.60",
+  "tokio",
+@@ -5410,7 +5410,7 @@ dependencies = [
+  "serde_bytes",
+  "serde_json",
+  "sha2 0.10.8",
+- "strum",
++ "strum 0.26.2",
+  "strum_macros",
+  "thiserror 1.0.60",
+  "time",
+@@ -5422,8 +5422,8 @@ dependencies = [
+ 
+ [[package]]
+ name = "mina-poseidon"
+-version = "0.1.0"
+-source = "git+https://github.com/o1-labs/proof-systems?tag=0.2.0#e8e02799802b42caf727d69c2dba7fce9548cb5b"
++version = "0.6.0"
++source = "git+https://github.com/o1-labs/proof-systems?rev=ab84160fa2c22290a8506a7742ac1378879fc386#ab84160fa2c22290a8506a7742ac1378879fc386"
+ dependencies = [
+  "ark-ec",
+  "ark-ff",
+@@ -5431,7 +5431,6 @@ dependencies = [
+  "ark-serialize",
+  "mina-curves",
+  "o1-utils",
+- "once_cell",
+  "rand",
+  "rayon",
+  "serde",
+@@ -5440,8 +5439,8 @@ dependencies = [
+ 
+ [[package]]
+ name = "mina-signer"
+-version = "0.1.0"
+-source = "git+https://github.com/o1-labs/proof-systems?tag=0.2.0#e8e02799802b42caf727d69c2dba7fce9548cb5b"
++version = "0.6.0"
++source = "git+https://github.com/o1-labs/proof-systems?rev=ab84160fa2c22290a8506a7742ac1378879fc386#ab84160fa2c22290a8506a7742ac1378879fc386"
+ dependencies = [
+  "ark-ec",
+  "ark-ff",
+@@ -5454,6 +5453,7 @@ dependencies = [
+  "num-bigint",
+  "o1-utils",
+  "rand",
++ "serde",
+  "sha2 0.10.8",
+  "thiserror 2.0.11",
+ ]
+@@ -5552,7 +5552,7 @@ dependencies = [
+  "serde_json",
+  "serde_with",
+  "sha2 0.10.8",
+- "strum",
++ "strum 0.26.2",
+  "strum_macros",
+  "thiserror 1.0.60",
+  "tuple-map",
+@@ -6108,10 +6108,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "o1-utils"
+-version = "0.1.0"
+-source = "git+https://github.com/o1-labs/proof-systems?tag=0.2.0#e8e02799802b42caf727d69c2dba7fce9548cb5b"
++version = "0.6.0"
++source = "git+https://github.com/o1-labs/proof-systems?rev=ab84160fa2c22290a8506a7742ac1378879fc386#ab84160fa2c22290a8506a7742ac1378879fc386"
+ dependencies = [
+- "ark-ec",
+  "ark-ff",
+  "ark-poly",
+  "ark-serialize",
+@@ -6120,13 +6119,14 @@ dependencies = [
+  "num-bigint",
+  "num-integer",
+  "rand",
+- "rand_core",
+  "rayon",
+  "rmp-serde",
++ "rustversion",
+  "serde",
+  "serde_json",
+  "serde_with",
+  "sha2 0.10.8",
++ "spin 0.10.1",
+  "thiserror 2.0.11",
+ ]
+ 
+@@ -6694,8 +6694,8 @@ dependencies = [
+ 
+ [[package]]
+ name = "poly-commitment"
+-version = "0.1.0"
+-source = "git+https://github.com/o1-labs/proof-systems?tag=0.2.0#e8e02799802b42caf727d69c2dba7fce9548cb5b"
++version = "0.6.0"
++source = "git+https://github.com/o1-labs/proof-systems?rev=ab84160fa2c22290a8506a7742ac1378879fc386#ab84160fa2c22290a8506a7742ac1378879fc386"
+ dependencies = [
+  "ark-ec",
+  "ark-ff",
+@@ -6703,13 +6703,13 @@ dependencies = [
+  "ark-serialize",
+  "blake2",
+  "groupmap",
++ "hashbrown 0.15.2",
+  "hex",
+  "itertools 0.12.1",
+  "mina-curves",
+  "mina-poseidon",
+  "num-bigint",
+  "o1-utils",
+- "once_cell",
+  "rand",
+  "rand_core",
+  "rayon",
+@@ -6717,6 +6717,7 @@ dependencies = [
+  "serde",
+  "serde_with",
+  "thiserror 2.0.11",
++ "zeroize",
+ ]
+ 
+ [[package]]
+@@ -8237,6 +8238,12 @@ dependencies = [
+  "lock_api",
+ ]
+ 
++[[package]]
++name = "spin"
++version = "0.10.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "023a211cb3138dbc438680b32560ad89f699977624c9f8dbb95a47d5b4c07dd3"
++
+ [[package]]
+ name = "spki"
+ version = "0.6.0"
+@@ -8317,6 +8324,12 @@ version = "0.26.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "5d8cec3501a5194c432b2b7976db6b7d10ec95c253208b45f83f7136aa985e29"
+ 
++[[package]]
++name = "strum"
++version = "0.27.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "af23d6f6c1a224baef9d3f61e287d2761385a5b88fdab4eb4c6f11aeb54c4bcf"
++
+ [[package]]
+ name = "strum_macros"
+ version = "0.26.4"
+@@ -8833,6 +8846,25 @@ dependencies = [
+  "winnow 0.7.2",
+ ]
+ 
++[[package]]
++name = "toon-1512"
++version = "0.1.0"
++dependencies = [
++ "ark-ec",
++ "ark-ff",
++ "base64 0.22.1",
++ "groupmap",
++ "mina-curves",
++ "mina-hasher",
++ "mina-p2p-messages",
++ "mina-poseidon",
++ "mina-signer",
++ "mina-tree",
++ "num-bigint",
++ "rsexp",
++ "serde_json",
++]
++
+ [[package]]
+ name = "tower"
+ version = "0.4.13"
+@@ -9133,16 +9165,6 @@ dependencies = [
+  "webrtc-util",
+ ]
+ 
+-[[package]]
+-name = "turshi"
+-version = "0.1.0"
+-source = "git+https://github.com/o1-labs/proof-systems?tag=0.2.0#e8e02799802b42caf727d69c2dba7fce9548cb5b"
+-dependencies = [
+- "ark-ff",
+- "hex",
+- "o1-utils",
+-]
+-
+ [[package]]
+ name = "twox-hash"
+ version = "2.1.1"
+diff --git i/Cargo.toml w/Cargo.toml
+index 95ac36ca..c728cfad 100644
+--- i/Cargo.toml
++++ w/Cargo.toml
+@@ -30,6 +30,7 @@ members = [
+   "tools/hash-tool",
+   "tools/ledger-tool",
+   "tools/testing",
++  "tools/toon-1512",
+   "tools/transport",
+   "tools/webrtc-sniffer",
+   # Reusable libraries (project-agnostic, potentially publishable)
+@@ -137,7 +138,7 @@ js-sys = "0.3.64"
+ jsonpath-rust = "0.5.0"
+ juniper = { version = "0.16" }
+ juniper_warp = "0.8.0"
+-kimchi = { git = "https://github.com/o1-labs/proof-systems", tag = "0.2.0" }
++kimchi = { git = "https://github.com/o1-labs/proof-systems", rev = "ab84160fa2c22290a8506a7742ac1378879fc386" }
+ lazy_static = "1.4.0"
+ leb128 = "0.2.1"
+ ledger = { path = "crates/ledger", package = "mina-tree" }
+@@ -151,9 +152,9 @@ md5 = "0.7.0"
+ mina-bootstrap-sandbox = { path = "tools/bootstrap-sandbox" }
+ mina-cli = { path = "crates/cli" }
+ mina-core = { path = "crates/core" }
+-mina-curves = { git = "https://github.com/o1-labs/proof-systems", tag = "0.2.0" }
++mina-curves = { git = "https://github.com/o1-labs/proof-systems", rev = "ab84160fa2c22290a8506a7742ac1378879fc386" }
+ mina-fuzzer = { path = "crates/fuzzer" }
+-mina-hasher = { git = "https://github.com/o1-labs/proof-systems", tag = "0.2.0" }
++mina-hasher = { git = "https://github.com/o1-labs/proof-systems", rev = "ab84160fa2c22290a8506a7742ac1378879fc386" }
+ mina-macros = { path = "crates/macros" }
+ mina-node = { path = "crates/node" }
+ mina-node-account = { path = "crates/node/account" }
+@@ -163,8 +164,8 @@ mina-node-native = { path = "crates/node/native" }
+ mina-node-testing = { path = "tools/testing" }
+ mina-p2p = { path = "crates/p2p" }
+ mina-p2p-messages = { path = "crates/p2p-messages" }
+-mina-poseidon = { git = "https://github.com/o1-labs/proof-systems", tag = "0.2.0" }
+-mina-signer = { git = "https://github.com/o1-labs/proof-systems", tag = "0.2.0" }
++mina-poseidon = { git = "https://github.com/o1-labs/proof-systems", rev = "ab84160fa2c22290a8506a7742ac1378879fc386" }
++mina-signer = { git = "https://github.com/o1-labs/proof-systems", rev = "ab84160fa2c22290a8506a7742ac1378879fc386" }
+ mina-snark = { path = "crates/snark" }
+ mina-transport = { path = "tools/transport" }
+ mina-vrf = { path = "crates/vrf" }
+@@ -178,14 +179,14 @@ num-bigint = { git = "https://github.com/openmina/num-bigint", branch = "rebase-
+ num-traits = "0.2"
+ num_cpus = "1.0"
+ num_enum = "0.5.7"
+-o1-utils = { git = "https://github.com/o1-labs/proof-systems", tag = "0.2.0" }
++o1-utils = { git = "https://github.com/o1-labs/proof-systems", rev = "ab84160fa2c22290a8506a7742ac1378879fc386" }
+ object = "0.37.1"
+ once_cell = "1"
+ p256 = { version = "0.13", features = ["default", "ecdh", "ecdsa"] }
+ p384 = "0.13"
+ pcap = "2.4"
+ pin-project-lite = "0.2.10"
+-poly-commitment = { git = "https://github.com/o1-labs/proof-systems", tag = "0.2.0" }
++poly-commitment = { git = "https://github.com/o1-labs/proof-systems", rev = "ab84160fa2c22290a8506a7742ac1378879fc386" }
+ poseidon = { path = "poseidon" }
+ postcard = { version = "1.0.9", features = ["use-std"] }
+ proc-macro2 = "1.0.103"
+diff --git i/crates/ledger/src/proofs/caching.rs w/crates/ledger/src/proofs/caching.rs
+index 1fec48a3..d57ebfda 100644
+--- i/crates/ledger/src/proofs/caching.rs
++++ w/crates/ledger/src/proofs/caching.rs
+@@ -21,9 +21,8 @@ use kimchi::{
+ };
+ use mina_curves::pasta::Fq;
+ use mina_p2p_messages::bigint::{BigInt, InvalidBigInt};
+-use once_cell::sync::OnceCell;
+ use poly_commitment::{
+-    commitment::CommitmentCurve, hash_map_cache::HashMapCache, ipa::SRS, PolyComm,
++    commitment::CommitmentCurve, ipa::SRS, PolyComm,
+ };
+ use serde::{Deserialize, Serialize};
+ 
+@@ -188,16 +187,13 @@ where
+             g: into(&srs.g),
+             h: (&srs.h).into(),
+             lagrange_bases: {
+-                let cloned = srs.lagrange_bases.clone();
+-                let map = HashMap::from(cloned);
++                let cloned = srs.lagrange_bases().clone();
++                let map: HashMap<usize, std::sync::Arc<Vec<PolyComm<G>>>> = HashMap::from(cloned);
+                 map.into_iter()
+                     .map(|(key, value)| {
+                         (
+                             key,
+-                            value
+-                                .into_iter()
+-                                .map(|pc| PolyCommCached::from(&pc))
+-                                .collect(),
++                            value.iter().map(PolyCommCached::from).collect(),
+                         )
+                     })
+                     .collect()
+@@ -211,19 +207,21 @@ where
+     G: CommitmentCurve + From<&'a GroupAffineCached>,
+ {
+     fn from(srs: &'a SRSCached) -> Self {
+-        Self {
++        poly_commitment::precomputed_srs::TestSRS {
+             g: into(&srs.g),
+             h: (&srs.h).into(),
+-            lagrange_bases: {
+-                let lagrange_bases = srs
+-                    .lagrange_bases
+-                    .iter()
+-                    .map(|(key, value)| (*key, value.iter().map(PolyComm::from).collect()))
+-                    .collect();
+-
+-                HashMapCache::new_from_hashmap(lagrange_bases)
+-            },
++            lagrange_bases: srs
++                .lagrange_bases
++                .iter()
++                .map(|(key, value)| {
++                    (
++                        *key,
++                        std::sync::Arc::new(value.iter().map(PolyComm::from).collect()),
++                    )
++                })
++                .collect(),
+         }
++        .into()
+     }
+ }
+ 
+@@ -460,10 +458,10 @@ impl From<&VerifierIndexCached> for VerifierIndex<Fq> {
+             foreign_field_add_comm: foreign_field_add_comm.clone(),
+             xor_comm: xor_comm.clone(),
+             shift: shift.each_ref().map(|s| s.to_field().unwrap()), // We trust cached data
+-            permutation_vanishing_polynomial_m: OnceCell::with_value(
+-                permutation_vanishing_polynomial_m.into(),
++            permutation_vanishing_polynomial_m: std::sync::OnceLock::from(
++                DensePolynomial::<Fq>::from(permutation_vanishing_polynomial_m),
+             ),
+-            w: OnceCell::with_value(w.to_field().unwrap()), // We trust cached data
++            w: std::sync::OnceLock::from(w.to_field::<Fq>().unwrap()), // We trust cached data
+             endo: endo.to_field().unwrap(),                 // We trust cached data
+             lookup_index: lookup_index.clone(),
+             linearization: conv_linearization(linearization, |v| v.try_into().unwrap()),
+diff --git i/crates/ledger/src/proofs/field.rs w/crates/ledger/src/proofs/field.rs
+index 14a14c87..8dd88610 100644
+--- i/crates/ledger/src/proofs/field.rs
++++ w/crates/ledger/src/proofs/field.rs
+@@ -47,7 +47,7 @@ where
+             BaseField = Self,
+             ScalarField = <Self as proofs::field::FieldWitness>::Scalar,
+         > + Into<GroupAffine<Self>>
+-        + KimchiCurve
++        + KimchiCurve<{ crate::proofs::FULL_ROUNDS }>
+         + std::fmt::Debug;
+     type Projective: CurveGroup<
+             Affine = Self::Affine,
+@@ -62,6 +62,7 @@ where
+         + std::fmt::Debug;
+     type Shifting: plonk_checks::ShiftingValue<Self> + Clone + std::fmt::Debug;
+     type OtherCurve: KimchiCurve<
++        { crate::proofs::FULL_ROUNDS },
+         ScalarField = Self,
+         BaseField = <Self as proofs::field::FieldWitness>::Scalar,
+     >;
+@@ -70,6 +71,7 @@ where
+             <Self as proofs::field::FieldWitness>::Scalar,
+             Self::OtherCurve,
+             Self,
++            { crate::proofs::FULL_ROUNDS },
+         >;
+ 
+     const PARAMS: Params<Self>;
+@@ -90,7 +92,7 @@ impl FieldWitness for Fp {
+     type Projective = ProjectivePallas;
+     type Shifting = ShiftedValue<Fp>;
+     type OtherCurve = GroupAffine<Fq>;
+-    type FqSponge = DefaultFqSponge<VestaParameters, PlonkSpongeConstantsKimchi>;
++    type FqSponge = DefaultFqSponge<VestaParameters, PlonkSpongeConstantsKimchi, { crate::proofs::FULL_ROUNDS }>;
+ 
+     /// <https://github.com/openmina/mina/blob/46b6403cb7f158b66a60fc472da2db043ace2910/src/lib/crypto/kimchi_backend/pasta/basic/kimchi_pasta_basic.ml#L107>
+     const PARAMS: Params<Self> = Params::<Self> {
+@@ -109,7 +111,7 @@ impl FieldWitness for Fq {
+     type Projective = ProjectiveVesta;
+     type Shifting = ShiftedValue<Fq>;
+     type OtherCurve = GroupAffine<Fp>;
+-    type FqSponge = DefaultFqSponge<PallasParameters, PlonkSpongeConstantsKimchi>;
++    type FqSponge = DefaultFqSponge<PallasParameters, PlonkSpongeConstantsKimchi, { crate::proofs::FULL_ROUNDS }>;
+ 
+     /// <https://github.com/openmina/mina/blob/46b6403cb7f158b66a60fc472da2db043ace2910/src/lib/crypto/kimchi_backend/pasta/basic/kimchi_pasta_basic.ml#L95>
+     const PARAMS: Params<Self> = Params::<Self> {
+diff --git i/crates/ledger/src/proofs/mod.rs w/crates/ledger/src/proofs/mod.rs
+index e9d67f24..8f14aea4 100644
+--- i/crates/ledger/src/proofs/mod.rs
++++ w/crates/ledger/src/proofs/mod.rs
+@@ -31,17 +31,22 @@ pub mod zkapp;
+ pub const BACKEND_TICK_ROUNDS_N: usize = 16;
+ pub const BACKEND_TOCK_ROUNDS_N: usize = 15;
+ 
++pub use mina_poseidon::pasta::FULL_ROUNDS;
++
+ pub type VerifierIndex<F> = kimchi::verifier_index::VerifierIndex<
++    FULL_ROUNDS,
+     <F as FieldWitness>::OtherCurve,
+-    OpeningProof<<F as FieldWitness>::OtherCurve>,
++    poly_commitment::ipa::SRS<<F as FieldWitness>::OtherCurve>,
+ >;
+ pub type ProverIndex<F> = kimchi::prover_index::ProverIndex<
++    FULL_ROUNDS,
+     <F as FieldWitness>::OtherCurve,
+-    OpeningProof<<F as FieldWitness>::OtherCurve>,
++    poly_commitment::ipa::SRS<<F as FieldWitness>::OtherCurve>,
+ >;
+ pub type ProverProof<F> = kimchi::proof::ProverProof<
+     <F as FieldWitness>::OtherCurve,
+-    OpeningProof<<F as FieldWitness>::OtherCurve>,
++    OpeningProof<<F as FieldWitness>::OtherCurve, FULL_ROUNDS>,
++    FULL_ROUNDS,
+ >;
+ 
+ pub fn generate_tx_proof(
+diff --git i/crates/ledger/src/proofs/step.rs w/crates/ledger/src/proofs/step.rs
+index 4a93b244..fae21e0a 100644
+--- i/crates/ledger/src/proofs/step.rs
++++ w/crates/ledger/src/proofs/step.rs
+@@ -1365,7 +1365,7 @@ pub mod step_verifier {
+         sponge: Sponge<Fp>,
+         xi: [u64; 2],
+         advice: &'a Advice<Fp>,
+-        openings_proof: &'a OpeningProof<GroupAffine<Fp>>,
++        openings_proof: &'a OpeningProof<GroupAffine<Fp>, { crate::proofs::FULL_ROUNDS }>,
+         srs: &'a SRS<GroupAffine<Fp>>,
+         polynomials: (Vec<CircuitVar<GroupAffine<Fp>>>, Vec<()>),
+     }
+@@ -2328,7 +2328,7 @@ fn expand_proof(params: ExpandProofParams) -> anyhow::Result<ExpandedProof> {
+             .map(|v| to_field(to_bytes(*v)))
+             .collect::<Vec<_>>();
+ 
+-        let r = to_field(to_bytes(r.0));
++        let r = to_field(to_bytes(r.inner()));
+         // let zeta = to_field(plonk0.zeta_bytes);
+         let challenge_poly = challenge_polynomial(&chals);
+         let b = challenge_poly(zeta) + (r * challenge_poly(zetaw));
+@@ -2435,9 +2435,9 @@ fn expand_proof(params: ExpandProofParams) -> anyhow::Result<ExpandedProof> {
+         public: &public,
+         minimal: &tock_plonk_minimal,
+         ft_eval1: proof.ft_eval1,
+-        r: to_field(to_bytes(r.0)),
++        r: to_field(to_bytes(r.inner())),
+         old_bulletproof_challenges: &prev_challenges,
+-        xi: to_field(to_bytes(xi.0)),
++        xi: to_field(to_bytes(xi.inner())),
+         zetaw,
+     });
+ 
+@@ -2460,7 +2460,7 @@ fn expand_proof(params: ExpandProofParams) -> anyhow::Result<ExpandedProof> {
+             },
+             combined_inner_product: shift(combined_inner_product),
+             b: shift(b),
+-            xi: to_bytes(xi.0),
++            xi: to_bytes(xi.inner()),
+             bulletproof_challenges: new_bulletproof_challenges,
+         },
+         should_finalize: must_verify.value().as_bool(),
+diff --git i/crates/ledger/src/proofs/transaction.rs w/crates/ledger/src/proofs/transaction.rs
+index c73ad8cd..4a5dd450 100644
+--- i/crates/ledger/src/proofs/transaction.rs
++++ w/crates/ledger/src/proofs/transaction.rs
+@@ -3973,7 +3973,7 @@ pub(super) fn create_proof<C: ProofConstants, F: FieldWitness>(
+     params: CreateProofParams<F>,
+     w: &Witness<F>,
+ ) -> anyhow::Result<ProofWithPublic<F>> {
+-    type EFrSponge<F> = mina_poseidon::sponge::DefaultFrSponge<F, PlonkSpongeConstantsKimchi>;
++    type EFrSponge<F> = mina_poseidon::sponge::DefaultFrSponge<F, PlonkSpongeConstantsKimchi, { crate::proofs::FULL_ROUNDS }>;
+ 
+     let CreateProofParams {
+         prover,
+diff --git i/crates/ledger/src/proofs/verification.rs w/crates/ledger/src/proofs/verification.rs
+index 4535a018..9cc8608c 100644
+--- i/crates/ledger/src/proofs/verification.rs
++++ w/crates/ledger/src/proofs/verification.rs
+@@ -505,12 +505,12 @@ fn verify_with(
+     use poly_commitment::ipa::OpeningProof;
+ 
+     type SpongeParams = mina_poseidon::constants::PlonkSpongeConstantsKimchi;
+-    type EFqSponge = DefaultFqSponge<PallasParameters, SpongeParams>;
+-    type EFrSponge = DefaultFrSponge<Fq, SpongeParams>;
++    type EFqSponge = DefaultFqSponge<PallasParameters, SpongeParams, { crate::proofs::FULL_ROUNDS }>;
++    type EFrSponge = DefaultFrSponge<Fq, SpongeParams, { crate::proofs::FULL_ROUNDS }>;
+ 
+     let group_map = GroupMap::<Fp>::setup();
+ 
+-    kimchi::verifier::verify::<Pallas, EFqSponge, EFrSponge, OpeningProof<Pallas>>(
++    kimchi::verifier::verify::<{ crate::proofs::FULL_ROUNDS }, Pallas, EFqSponge, EFrSponge, OpeningProof<Pallas, { crate::proofs::FULL_ROUNDS }>>(
+         &group_map,
+         verifier_index,
+         proof,
+@@ -530,8 +530,8 @@ fn batch_verify(proofs: &[VerificationContext]) -> Result<(), VerifyError> {
+     use poly_commitment::ipa::OpeningProof;
+ 
+     type SpongeParams = mina_poseidon::constants::PlonkSpongeConstantsKimchi;
+-    type EFqSponge = DefaultFqSponge<PallasParameters, SpongeParams>;
+-    type EFrSponge = DefaultFrSponge<Fq, SpongeParams>;
++    type EFqSponge = DefaultFqSponge<PallasParameters, SpongeParams, { crate::proofs::FULL_ROUNDS }>;
++    type EFrSponge = DefaultFrSponge<Fq, SpongeParams, { crate::proofs::FULL_ROUNDS }>;
+ 
+     let group_map = GroupMap::<Fp>::setup();
+     let proofs = proofs
+@@ -543,7 +543,7 @@ fn batch_verify(proofs: &[VerificationContext]) -> Result<(), VerifyError> {
+         })
+         .collect_vec();
+ 
+-    kimchi::verifier::batch_verify::<Pallas, EFqSponge, EFrSponge, OpeningProof<Pallas>>(
++    kimchi::verifier::batch_verify::<{ crate::proofs::FULL_ROUNDS }, Pallas, EFqSponge, EFrSponge, OpeningProof<Pallas, { crate::proofs::FULL_ROUNDS }>>(
+         &group_map, &proofs,
+     )
+ }
+@@ -827,6 +827,42 @@ pub fn verify_zkapp(
+     ok
+ }
+ 
++/// toon-protocol/connector#1512: verify a side-loaded proof of any o1js
++/// `ZkProgram` against its public input fields (public input, then public
++/// output). The same steps as `verify_zkapp`, without its `ZkappStatement`,
++/// its logging or its failure dump to disk.
++pub fn verify_sideloaded(
++    verification_key: &VerificationKey,
++    public_input: &[Fp],
++    sideloaded_proof: &PicklesProofProofsVerified2ReprStableV2,
++    srs: &SRS<Vesta>,
++) -> bool {
++    let verifier_index = make_zkapp_verifier_index(verification_key);
++    verify_sideloaded_with_index(verification_key, &verifier_index, public_input, sideloaded_proof, srs)
++}
++
++/// As `verify_sideloaded`, with the verifier index built once by the caller
++/// (`make_zkapp_verifier_index`) and reused across proofs under one key.
++pub fn verify_sideloaded_with_index(
++    verification_key: &VerificationKey,
++    verifier_index: &VerifierIndex<Fq>,
++    public_input: &[Fp],
++    sideloaded_proof: &PicklesProofProofsVerified2ReprStableV2,
++    srs: &SRS<Vesta>,
++) -> bool {
++    let vk = VK {
++        commitments: *verification_key.wrap_index.clone(),
++        index: verifier_index,
++        data: (),
++    };
++    let accum_check = accumulator_check::accumulator_check(srs, &[sideloaded_proof]).unwrap_or(false);
++    let verified = verify_impl(&public_input.to_vec(), sideloaded_proof, &vk);
++    if std::env::var("TOON_1512_DEBUG").is_ok() {
++        eprintln!("debug: accum_check={accum_check} verify_impl={verified:?} wrap_domain={} public={}", verifier_index.domain.log_size_of_group, verifier_index.public);
++    }
++    accum_check && verified.unwrap_or(false)
++}
++
+ fn verify_impl<AppState>(
+     app_state: &AppState,
+     proof: &PicklesProofProofsVerified2ReprStableV2,
+@@ -837,6 +873,9 @@ where
+ {
+     let deferred_values = compute_deferred_values(proof)?;
+     let checks = run_checks(proof, vk.index);
++    if std::env::var("TOON_1512_DEBUG").is_ok() {
++        eprintln!("debug: run_checks={checks}");
++    }
+ 
+     let message_for_next_step_proof = get_message_for_next_step_proof(
+         &proof.statement.messages_for_next_step_proof,
+diff --git i/crates/ledger/src/proofs/verifiers.rs w/crates/ledger/src/proofs/verifiers.rs
+index dd77f68d..0b3d05f3 100644
+--- i/crates/ledger/src/proofs/verifiers.rs
++++ w/crates/ledger/src/proofs/verifiers.rs
+@@ -359,8 +359,8 @@ fn make_verifier_index(index: VerifierIndex<Fq>) -> VerifierIndex<Fq> {
+ 
+     VerifierIndex::<Fq> {
+         srs,
+-        permutation_vanishing_polynomial_m: OnceCell::from(permutation_vanishing_polynomial_m),
+-        w: OnceCell::from(w),
++        permutation_vanishing_polynomial_m: std::sync::OnceLock::from(permutation_vanishing_polynomial_m),
++        w: std::sync::OnceLock::from(w),
+         endo,
+         linearization,
+         powers_of_alpha,
+@@ -464,10 +464,10 @@ pub fn make_zkapp_verifier_index(vk: &VerificationKey) -> VerifierIndex<Fq> {
+         xor_comm: None,
+         rot_comm: None,
+         shift: *shift.shifts(),
+-        permutation_vanishing_polynomial_m: OnceCell::with_value(permutation_vanishing_polynomial(
++        permutation_vanishing_polynomial_m: std::sync::OnceLock::from(permutation_vanishing_polynomial(
+             domain, zk_rows,
+         )),
+-        w: { OnceCell::with_value(zk_w(domain, zk_rows)) },
++        w: { std::sync::OnceLock::from(zk_w(domain, zk_rows)) },
+         endo: endo_q,
+         lookup_index: None,
+         linearization,
+diff --git i/crates/ledger/src/proofs/wrap.rs w/crates/ledger/src/proofs/wrap.rs
+index 9bf2eb0b..465c8eda 100644
+--- i/crates/ledger/src/proofs/wrap.rs
++++ w/crates/ledger/src/proofs/wrap.rs
+@@ -143,7 +143,7 @@ pub struct Oracles<F: FieldWitness> {
+ 
+ impl<F: FieldWitness> Oracles<F> {
+     pub fn alpha(&self) -> F {
+-        self.o.alpha_chal.0
++        self.o.alpha_chal.inner()
+     }
+ 
+     pub fn beta(&self) -> F {
+@@ -155,7 +155,7 @@ impl<F: FieldWitness> Oracles<F> {
+     }
+ 
+     pub fn zeta(&self) -> F {
+-        self.o.zeta_chal.0
++        self.o.zeta_chal.inner()
+     }
+ 
+     pub fn joint_combiner(&self) -> Option<F> {
+@@ -226,9 +226,9 @@ pub fn create_oracle_with_public_input<F: FieldWitness>(
+             .commitment
+     };
+ 
+-    type EFrSponge<F> = DefaultFrSponge<F, PlonkSpongeConstantsKimchi>;
++    type EFrSponge<F> = DefaultFrSponge<F, PlonkSpongeConstantsKimchi, { crate::proofs::FULL_ROUNDS }>;
+     let oracles_result = proof
+-        .oracles::<F::FqSponge, EFrSponge<F>>(verifier_index, &p_comm, Some(public_input))
++        .oracles::<F::FqSponge, EFrSponge<F>, _>(verifier_index, &p_comm, Some(public_input))
+         .unwrap();
+ 
+     let OraclesResult {
+@@ -250,7 +250,7 @@ pub fn create_oracle_with_public_input<F: FieldWitness>(
+         .proof
+         .prechallenges(&mut sponge)
+         .into_iter()
+-        .map(|f| f.0)
++        .map(|f| f.inner())
+         .collect();
+ 
+     Oracles {
+@@ -402,7 +402,7 @@ fn deferred_values(params: DeferredValuesParams) -> DeferredValuesAndHints {
+             .map(|v| scalar_to_field(to_bytes(v)))
+             .collect::<Vec<_>>();
+ 
+-        let r = scalar_to_field(to_bytes(r.0));
++        let r = scalar_to_field(to_bytes(r.inner()));
+         let zeta = scalar_to_field(plonk0.zeta_bytes);
+         let challenge_poly = challenge_polynomial(&chals);
+         let b = challenge_poly(zeta) + (r * challenge_poly(zetaw));
+@@ -420,9 +420,9 @@ fn deferred_values(params: DeferredValuesParams) -> DeferredValuesAndHints {
+             evals,
+             combined_evals: &combined_evals,
+             minimal: &tick_plonk_minimal,
+-            r: scalar_to_field(to_bytes(r.0)),
++            r: scalar_to_field(to_bytes(r.inner())),
+             old_bulletproof_challenges: &prev_challenges,
+-            xi: scalar_to_field(to_bytes(xi.0)),
++            xi: scalar_to_field(to_bytes(xi.inner())),
+             zetaw,
+             public: &x_hat,
+             ft_eval1: proof_with_public.proof.ft_eval1,
+@@ -445,7 +445,7 @@ fn deferred_values(params: DeferredValuesParams) -> DeferredValuesAndHints {
+             },
+             combined_inner_product: shift(combined_inner_product),
+             b: shift(b),
+-            xi: to_bytes(xi.0),
++            xi: to_bytes(xi.inner()),
+             bulletproof_challenges: {
+                 assert_eq!(new_bulletproof_challenges.len(), BACKEND_TICK_ROUNDS_N);
+                 new_bulletproof_challenges
+@@ -2137,7 +2137,7 @@ pub mod wrap_verifier {
+         sponge: Sponge<Fq>,
+         xi: [u64; 2],
+         advice: &'a Advice<Fq>,
+-        openings_proof: &'a OpeningProof<Vesta>,
++        openings_proof: &'a OpeningProof<Vesta, { crate::proofs::FULL_ROUNDS }>,
+         srs: &'a SRS<GroupAffine<Fq>>,
+         polynomials: (
+             Vec<(CircuitVar<Boolean>, split_commitments::Point<Fq>)>,
+@@ -2240,7 +2240,7 @@ pub mod wrap_verifier {
+         pub(super) advice: Advice<Fq>,
+         pub(super) messages: &'a kimchi::proof::ProverCommitments<Vesta>,
+         pub(super) which_branch: Vec<Boolean>,
+-        pub(super) openings_proof: &'a OpeningProof<Vesta>,
++        pub(super) openings_proof: &'a OpeningProof<Vesta, { crate::proofs::FULL_ROUNDS }>,
+         pub(super) plonk: &'a Plonk<Fp>,
+     }
+ 
+@@ -2521,7 +2521,7 @@ pub mod one_hot_vector {
+     }
+ }
+ 
+-impl Check<Fq> for OpeningProof<Vesta> {
++impl Check<Fq> for OpeningProof<Vesta, { crate::proofs::FULL_ROUNDS }> {
+     fn check(&self, w: &mut Witness<Fq>) {
+         let Self {
+             lr,
+@@ -2545,7 +2545,7 @@ impl Check<Fq> for OpeningProof<Vesta> {
+     }
+ }
+ 
+-impl ToFieldElements<Fq> for OpeningProof<Vesta> {
++impl ToFieldElements<Fq> for OpeningProof<Vesta, { crate::proofs::FULL_ROUNDS }> {
+     fn to_field_elements(&self, fields: &mut Vec<Fq>) {
+         let Self {
+             lr,
+diff --git i/crates/ledger/src/staged_ledger/staged_ledger.rs w/crates/ledger/src/staged_ledger/staged_ledger.rs
+index 6eb02684..087ba287 100644
+--- i/crates/ledger/src/staged_ledger/staged_ledger.rs
++++ w/crates/ledger/src/staged_ledger/staged_ledger.rs
+@@ -2387,7 +2387,7 @@ mod tests_ocaml {
+ 
+                         let mut signer =
+                             mina_signer::create_legacy(mina_signer::NetworkId::TESTNET);
+-                        signer.sign(sender_pk, &payload_to_sign, false)
++                        signer.sign(sender_pk, &payload_to_sign, mina_signer::NonceMode::Legacy)
+                     }
+                 };
+ 
+@@ -5585,7 +5585,7 @@ mod tests_ocaml {
+         let payload_to_sign = TransactionUnionPayload::of_user_command_payload(&payload);
+ 
+         let mut signer = mina_signer::create_legacy(mina_signer::NetworkId::TESTNET);
+-        let signature = signer.sign(kp, &payload_to_sign, false);
++        let signature = signer.sign(kp, &payload_to_sign, mina_signer::NonceMode::Legacy);
+ 
+         let signed_command = SignedCommand {
+             payload,
+@@ -5681,7 +5681,7 @@ mod tests_ocaml {
+             let payload_to_sign = TransactionUnionPayload::of_user_command_payload(&payload);
+ 
+             let mut signer = mina_signer::create_legacy(mina_signer::NetworkId::TESTNET);
+-            let signature = signer.sign(&kp, &payload_to_sign, false);
++            let signature = signer.sign(&kp, &payload_to_sign, mina_signer::NonceMode::Legacy);
+ 
+             let signed_command = SignedCommand {
+                 payload,
