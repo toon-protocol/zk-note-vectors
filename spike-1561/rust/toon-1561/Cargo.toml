@@ -1,0 +1,9 @@
+[package]
+name = "toon-1561"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ledger = { workspace = true }
+mina-curves = { workspace = true }
+anyhow = { workspace = true }
